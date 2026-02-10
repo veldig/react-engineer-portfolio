@@ -3,12 +3,6 @@ import { motion } from 'framer-motion';
 
 const projects = [
     {
-        title: 'On-Device CSV Cleaner (iOS)',
-        stack: 'Swift, MLX, Core ML',
-        summary:
-            'Built an offline CSV cleaning tool using on-device AI for PII removal and privacy-compliant data prep.',
-    },
-    {
         title: 'Finance Learning App (Duolingo-Style UI)',
         stack: 'React, Next.js, Vercel',
         summary:
@@ -28,6 +22,12 @@ const projects = [
         stack: 'FastAPI, PostgreSQL, React',
         summary:
             'Built a real-time stock data pipeline with REST APIs and an analytics dashboard for streaming insights.',
+    },
+    {
+        title: 'On-Device CSV Cleaner (iOS)',
+        stack: 'Swift, MLX, Core ML',
+        summary:
+            'Built an offline CSV cleaning tool using on-device AI for PII removal and privacy-compliant data prep.',
     },
 ];
 
