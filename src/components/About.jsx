@@ -22,25 +22,25 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="font-display text-5xl md:text-7xl font-bold mb-12"
+                    className="font-display text-[clamp(2.25rem,8vw,4rem)] md:text-7xl font-bold mb-10 md:mb-12"
                 >
                     ENGINEER.<br />
                     <span className="text-fluo">BUILDER.</span>
                 </motion.h2>
 
-                <div className="grid md:grid-cols-2 gap-12 font-sans">
+                <div className="grid md:grid-cols-2 gap-10 md:gap-12 font-sans">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
-                        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                        <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
                             Backend-focused software engineer with strong foundations in object-oriented programming
                             and scalable system design. I specialize in building high-performance applications
                             and developing large-scale data workflows in cloud environments.
                         </p>
-                        <p className="text-gray-300 text-lg leading-relaxed">
+                        <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                             Passionate about engineering reliable enterprise AI systems that solve complex problems.
                             Currently studying Computer Science at the University of Indianapolis (GPA 3.91).
                         </p>
@@ -52,12 +52,12 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.4, duration: 0.6 }}
                     >
-                        <h3 className="font-display text-xl mb-6 tracking-widest border-b border-gray-700 pb-2">CORE SKILLS</h3>
+                        <h3 className="font-display text-lg sm:text-xl mb-6 tracking-widest border-b border-gray-700 pb-2">CORE SKILLS</h3>
                         <div className="grid grid-cols-1 gap-4">
                             {skills.map((skill, index) => (
                                 <div key={index} className="flex items-center group">
                                     <span className="w-2 h-2 bg-fluo mr-4 rounded-full group-hover:scale-150 transition-transform"></span>
-                                    <span className="text-lg group-hover:text-fluo transition-colors">{skill}</span>
+                                    <span className="text-base sm:text-lg group-hover:text-fluo transition-colors">{skill}</span>
                                 </div>
                             ))}
                         </div>
