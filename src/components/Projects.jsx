@@ -3,79 +3,39 @@ import { motion } from 'framer-motion';
 
 const projects = [
     {
-        title: "CARROT",
-        role: "Co-Founder & Backend Engineer",
-        year: "2025",
-        desc: "Architected a production-grade multi-LLM routing system (FastAPI + Supabase) with dynamic model selection.",
-        tags: ["FastAPI", "Supabase", "LLMs"],
-        liveLink: "https://www.studentaitoolkit.online",
-        size: "large"
+        title: 'On-Device CSV Cleaner (iOS)',
+        stack: 'Swift, MLX, Core ML',
+        summary:
+            'Built an offline CSV cleaning tool using on-device AI for PII removal and privacy-compliant data prep.',
     },
     {
-        title: "HOOSIER RACING",
-        role: "Software Intern",
-        year: "2025",
-        desc: "Built a cross-platform inventory app tracking 5+ warehouses. Enabled real-time tracking with SQL & Flutter.",
-        tags: ["Flutter", "SQL", "Mobile"],
-        size: "small"
+        title: 'Sanctum — Chrome Privacy Filter',
+        stack: 'TypeScript, Manifest V3',
+        summary:
+            'Client-side Chrome extension that redacts PII before prompts are sent to ChatGPT, Claude, or Gemini.',
     },
     {
-        title: "Duolingo-Style Investing App (UI Prototype)",
-        role: "UI Prototype",
-        year: "2026",
-        desc: "Designed a gamified investing education UI prototype focused on retention mechanics and finance-specific micro-interactions.",
-        tagsText: "UI/UX · FinTech · Prototype",
-        liveLink: "https://jelly-swart-eta.vercel.app",
-        size: "large"
+        title: 'Real-Time Market Data Analysis',
+        stack: 'FastAPI, PostgreSQL, React',
+        summary:
+            'Built a real-time stock data pipeline with REST APIs and an analytics dashboard for streaming insights.',
     },
-    {
-        title: "CAPTE PLATFORM",
-        role: "Tech Lead",
-        year: "2025",
-        desc: "Led engineering for an enterprise accreditation platform. Designed an LLM mapping pipeline reducing prep time from hours to minutes.",
-        tags: ["Python", "Firebase", "Gemini"],
-        size: "large"
-    },
-    {
-        title: "SANCTUM",
-        role: "Chrome Extension",
-        year: "2025",
-        desc: "Privacy filter that redacts PII before prompts are sent to ChatGPT/Claude. Built with TypeScript.",
-        tags: ["TypeScript", "Security", "Chrome"],
-        size: "small"
-    },
-    {
-        title: "SCARA ROBOT",
-        role: "Researcher",
-        year: "2024",
-        desc: "Engineered a 3-DOF robotic arm with vision-guided pick-and-place using inverse kinematics.",
-        tags: ["Robotics", "MATLAB", "Vision"],
-        size: "small"
-    },
-    {
-        title: "CSV CLEANER",
-        role: "iOS App",
-        year: "2025",
-        desc: "Offline on-device AI tool for PII removal and privacy-compliant data prep.",
-        tags: ["Swift", "CoreML", "On-Device"],
-        size: "small"
-    }
 ];
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20 px-4 md:px-20 bg-dark-bg text-white">
+        <section id="projects" className="py-24 px-4 md:px-20 bg-dark-bg text-white">
             <div className="max-w-7xl mx-auto">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="font-display text-5xl md:text-8xl font-bold mb-16 text-right md:text-left"
+                    className="font-display text-5xl md:text-8xl font-bold mb-16"
                 >
-                    SELECTED<br /><span className="text-outline text-transparent stroke-white stroke-1">WORKS</span>
+                    PROJECTS
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
@@ -83,45 +43,18 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className={`group relative bg-dark-secondary p-8 flex flex-col justify-between border border-gray-800 hover:border-fluo transition-colors duration-500 rounded-none overflow-hidden ${project.size === 'large' ? 'md:col-span-2' : 'md:col-span-1'
-                                }`}
+                            className="group relative bg-dark-secondary/40 p-7 md:p-8 border border-gray-800 hover:border-fluo transition-colors duration-500 rounded-none"
                         >
-                            {/* Hover Glow Effect */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-fluo rounded-full blur-[100px] opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
-
-                            <div>
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="font-mono text-fluo text-xs tracking-widest">{project.year}</span>
-                                    <span className="font-sans text-gray-500 text-xs uppercase">{project.role}</span>
+                            <div className="space-y-4">
+                                <h3 className="font-display text-2xl md:text-3xl font-bold group-hover:text-fluo transition-colors">
+                                    {project.title}
+                                </h3>
+                                <div className="font-mono text-xs uppercase tracking-widest text-gray-400">
+                                    {project.stack}
                                 </div>
-                                <h3 className="font-display text-3xl md:text-4xl font-bold mb-4 group-hover:text-fluo transition-colors">{project.title}</h3>
-                                <p className="text-gray-400 font-sans text-sm md:text-base leading-relaxed mb-6">{project.desc}</p>
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                {project.tagsText ? (
-                                    <div className="text-gray-400 font-mono text-xs uppercase tracking-widest">
-                                        {project.tagsText}
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag) => (
-                                            <span key={tag} className="px-3 py-1 border border-gray-700 rounded-full text-xs text-gray-400 font-mono group-hover:border-fluo group-hover:text-fluo transition-colors">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-                                {project.liveLink && (
-                                    <a
-                                        href={project.liveLink}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex items-center justify-center px-5 py-3 border-2 border-fluo text-fluo font-mono text-xs uppercase tracking-widest hover:bg-fluo hover:text-dark-bg transition-colors duration-300"
-                                    >
-                                        Live Demo
-                                    </a>
-                                )}
+                                <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                                    {project.summary}
+                                </p>
                             </div>
                         </motion.div>
                     ))}
