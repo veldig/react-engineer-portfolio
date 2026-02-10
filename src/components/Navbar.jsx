@@ -6,6 +6,16 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => setIsOpen(!isOpen);
+    const hireMeLink =
+        'mailto:vizcainom@uindy.edu?subject=Software%20Engineering%20Opportunity&body=Hi%20Martin,%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity.%0ABest,%0A%5BName%5D';
+
+    const handleHireMeClick = (event) => {
+        event.preventDefault();
+        window.location.href = hireMeLink;
+        window.setTimeout(() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    };
 
     const menuItems = [
         { title: 'HOME', href: '#hero' },
@@ -35,7 +45,8 @@ const Navbar = () => {
                     RESUME
                 </a>
                 <a
-                    href="mailto:vizcainom@uindy.edu?subject=Software%20Engineering%20Opportunity&body=Hi%20Martin,%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity.%0ABest,%0A%5BName%5D"
+                    href={hireMeLink}
+                    onClick={handleHireMeClick}
                     className="bg-fluo text-black px-6 py-2 font-bold hover:bg-white transition-colors duration-300 transform skew-x-[-10deg]"
                 >
                     <span className="block transform skew-x-[10deg]">HIRE ME</span>

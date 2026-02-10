@@ -9,10 +9,19 @@ const projects = [
             'Built an offline CSV cleaning tool using on-device AI for PII removal and privacy-compliant data prep.',
     },
     {
+        title: 'Finance Learning App (Duolingo-Style UI)',
+        stack: 'React, Next.js, Vercel',
+        summary:
+            'Frontend prototype of an interactive investing education platform with micro-learning modules and notebook-based LLM integration.',
+        liveLink: 'https://jelly-swart-eta.vercel.app',
+        githubLink: 'https://github.com/veldig/Lando-portfolio',
+    },
+    {
         title: 'Sanctum — Chrome Privacy Filter',
-        stack: 'TypeScript, Manifest V3',
+        stack: 'Python, FastAPI, Manifest V3',
         summary:
             'Client-side Chrome extension that redacts PII before prompts are sent to ChatGPT, Claude, or Gemini.',
+        githubLink: 'https://github.com/veldig/sanctum-ai',
     },
     {
         title: 'Real-Time Market Data Analysis',
@@ -55,6 +64,30 @@ const Projects = () => {
                                 <p className="text-gray-400 text-sm md:text-base leading-relaxed">
                                     {project.summary}
                                 </p>
+                                {(project.liveLink || project.githubLink) && (
+                                    <div className="flex flex-wrap gap-3 pt-2">
+                                        {project.liveLink && (
+                                            <a
+                                                href={project.liveLink}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex items-center justify-center px-4 py-2 border-2 border-fluo bg-fluo text-black font-mono text-xs uppercase tracking-widest hover:bg-transparent hover:text-fluo transition-colors duration-300"
+                                            >
+                                                Live Demo
+                                            </a>
+                                        )}
+                                        {project.githubLink && (
+                                            <a
+                                                href={project.githubLink}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex items-center justify-center px-4 py-2 border border-gray-700 text-gray-300 font-mono text-xs uppercase tracking-widest hover:border-fluo hover:text-fluo transition-colors duration-300"
+                                            >
+                                                GitHub
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         </motion.div>
                     ))}
