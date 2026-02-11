@@ -1,37 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const projects = [
-    {
-        title: 'Finance Learning App (Duolingo-Style UI)',
-        stack: 'React, Next.js, Vercel',
-        summary:
-            'Frontend prototype of an interactive investing education platform with micro-learning modules and notebook-based LLM integration.',
-        liveLink: 'https://jelly-swart-eta.vercel.app',
-        githubLink: 'https://github.com/veldig/Lando-portfolio',
-    },
-    {
-        title: 'Sanctum — Chrome Privacy Filter',
-        stack: 'Python, FastAPI, Manifest V3',
-        summary:
-            'Client-side Chrome extension that redacts PII before prompts are sent to ChatGPT, Claude, or Gemini.',
-        githubLink: 'https://github.com/veldig/sanctum-ai',
-    },
-    {
-        title: 'Real-Time Market Data Analysis',
-        stack: 'FastAPI, PostgreSQL, React',
-        summary:
-            'Built a real-time stock data pipeline with REST APIs and an analytics dashboard for streaming insights.',
-    },
-    {
-        title: 'On-Device CSV Cleaner (iOS)',
-        stack: 'Swift, MLX, Core ML',
-        summary:
-            'Built an offline CSV cleaning tool using on-device AI for PII removal and privacy-compliant data prep.',
-    },
-];
+import siteConfig from '../data/siteConfig';
 
 const Projects = () => {
+    const { projects } = siteConfig;
+
     return (
         <section id="projects" className="py-24 px-4 sm:px-6 md:px-20 bg-dark-bg text-white">
             <div className="max-w-7xl mx-auto">
@@ -47,7 +20,7 @@ const Projects = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <motion.div
-                            key={index}
+                            key={`${project.title}-${index}`}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

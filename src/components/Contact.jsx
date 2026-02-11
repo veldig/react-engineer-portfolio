@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Phone } from 'lucide-react';
+import siteConfig from '../data/siteConfig';
 
 const Contact = () => {
     const [copied, setCopied] = useState(false);
-    const email = 'vizcainom@uindy.edu';
+    const { contact, hireMe } = siteConfig;
+    const email = contact.email;
+    const hireMeLink = hireMe.mailto || `mailto:${email}`;
 
     const copyEmail = async () => {
         try {
@@ -40,8 +43,12 @@ const Contact = () => {
                         viewport={{ once: true }}
                     >
                         <h2 className="font-display text-[clamp(2.5rem,9vw,5rem)] md:text-8xl font-bold leading-tight mb-8">
-                            LET'S<br />
-                            <span className="text-fluo">TALK</span>
+                            {contact.headline.split('\n').map((line) => (
+                                <span key={line}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
                         </h2>
                     </motion.div>
 
@@ -52,17 +59,17 @@ const Contact = () => {
                         className="flex flex-col justify-center space-y-8"
                     >
                         <p className="text-base sm:text-lg md:text-xl text-gray-300">
-                            Open to software engineering opportunities and focused collaborations.
+                            {contact.subhead}
                         </p>
 
                         <div className="flex flex-col gap-4">
                             <div className="space-y-4">
                                 <a
-                                    href="mailto:vizcainom@uindy.edu?subject=Software%20Engineering%20Opportunity&body=Hi%20Martin,%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity.%0ABest,%0A%5BName%5D"
+                                    href={hireMeLink}
                                     className="flex items-center group text-base sm:text-lg font-display text-gray-300 hover:text-fluo transition-colors"
                                 >
                                     <Mail className="mr-3 text-gray-500 group-hover:text-fluo" />
-                                    {email}
+                                    {contact.emailDisplay}
                                 </a>
                                 <div className="flex items-center gap-4">
                                     <button
@@ -77,17 +84,17 @@ const Contact = () => {
                                     </span>
                                 </div>
                                 <a
-                                    href="https://www.linkedin.com/in/martinvizcaino/"
+                                    href={contact.linkedin.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center group text-base sm:text-lg font-display text-gray-300 hover:text-fluo transition-colors"
                                 >
                                     <Linkedin className="mr-3 text-gray-500 group-hover:text-fluo" />
-                                    /in/martinvizcaino
+                                    {contact.linkedin.label}
                                 </a>
                                 <div className="flex items-center group text-base sm:text-lg font-display text-gray-400">
                                     <Phone className="mr-3 text-gray-500" />
-                                    (872) 319-3251
+                                    {contact.phone}
                                 </div>
                             </div>
                         </div>

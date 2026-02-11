@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import siteConfig from '../data/siteConfig';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { navigation, branding, resume, hireMe, contact } = siteConfig;
 
     const toggleMenu = () => setIsOpen(!isOpen);
-    const hireMeLink =
-        'mailto:vizcainom@uindy.edu?subject=Software%20Engineering%20Opportunity&body=Hi%20Martin,%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity.%0ABest,%0A%5BName%5D';
+    const hireMeLink = hireMe.mailto || `mailto:${contact.email}`;
 
     const handleHireMeClick = (event) => {
         event.preventDefault();
@@ -22,39 +23,31 @@ const Navbar = () => {
         return () => document.body.classList.remove('menu-open');
     }, [isOpen]);
 
-    const menuItems = [
-        { title: 'HOME', href: '#hero' },
-        { title: 'ABOUT', href: '#about' },
-        { title: 'EXPERIENCE', href: '#experience' },
-        { title: 'PROJECTS', href: '#projects' },
-        { title: 'CONTACT', href: '#contact' },
-    ];
-
     return (
         <nav className="fixed top-0 left-0 w-full z-[70] px-6 py-6 flex justify-between items-center text-white bg-black/70 backdrop-blur-md shadow-lg md:bg-transparent md:backdrop-blur-0 md:shadow-none md:mix-blend-difference">
             <div className="text-2xl font-bold font-display tracking-tighter">
-                MV<span className="text-fluo">.</span>
+                {branding.initials}<span className="text-fluo">.</span>
             </div>
 
             <div className="hidden md:flex gap-8 font-display text-sm tracking-widest">
-                {menuItems.map((item) => (
+                {navigation.map((item) => (
                     <a key={item.title} href={item.href} className="hover:text-fluo transition-colors duration-300">
                         {item.title}
                     </a>
                 ))}
                 <a
-                    href="/Martin_Vizcaino_Resume_2026.pdf"
+                    href={resume.url}
                     download
                     className="hover:text-fluo transition-colors duration-300"
                 >
-                    RESUME
+                    {resume.label}
                 </a>
                 <a
                     href={hireMeLink}
                     onClick={handleHireMeClick}
                     className="bg-fluo text-black px-6 py-2 min-h-[44px] font-bold hover:bg-white transition-colors duration-300 transform skew-x-[-10deg]"
                 >
-                    <span className="block transform skew-x-[10deg]">HIRE ME</span>
+                    <span className="block transform skew-x-[10deg]">{hireMe.label}</span>
                 </a>
             </div>
 
@@ -82,7 +75,7 @@ const Navbar = () => {
                             <div className="relative w-full max-w-sm mx-auto max-h-[calc(100dvh-8rem)] overflow-y-auto">
                                 <div className="absolute inset-0 rounded-3xl bg-black/85 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70" />
                                 <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-8 mix-blend-normal">
-                                    {menuItems.map((item, index) => (
+                                    {navigation.map((item, index) => (
                                         <motion.a
                                             key={item.title}
                                             href={item.href}
@@ -97,11 +90,11 @@ const Navbar = () => {
                                     ))}
                                     <div className="mt-2 flex flex-col gap-3 w-full max-w-xs">
                                         <a
-                                            href="/Martin_Vizcaino_Resume_2026.pdf"
+                                            href={resume.url}
                                             download
                                             className="bg-white/10 border border-white/20 text-white text-center py-3 rounded-xl font-display font-bold"
                                         >
-                                            RESUME
+                                            {resume.label}
                                         </a>
                                         <a
                                             href={hireMeLink}
@@ -111,7 +104,7 @@ const Navbar = () => {
                                             }}
                                             className="bg-fluo text-black text-center py-3 rounded-xl font-display font-bold"
                                         >
-                                            HIRE ME
+                                            {hireMe.label}
                                         </a>
                                     </div>
                                 </div>
